@@ -13,6 +13,7 @@ def task()
   world.read_world("../worlds/stair_world.txt")
   
   karel = StairSweeper.new(1, 1, Robota::EAST, 0)
+  byebug
   karel.sweep_stairs()
   world.show_world_with_robots(1, 1, 6, 6)
   karel.display()
