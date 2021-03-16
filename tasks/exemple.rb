@@ -4,19 +4,33 @@
 
 $graphical = true
 
-require_relative "stair_sweeper"
-require_relative "../karel/robota"
+require_relative "../karel/ur_robot"
+
+
+
+class MonRobot < UrRobot
+
+  def initialize (street, avenue, direction, beepers)
+    super(street, avenue, NORTH, beepers)
+  end
+
+
+  def move
+    super 
+    super 
+  end
+
+end
+
 
 # a task for a stair sweeper
 def task()
   world = Robota::World
-  world.read_world("../worlds/jade")
+  #world.read_world("../worlds/monde")
   
-  karel = StairSweeper.new(1, 1, Robota::EAST, 0)
-  karel.sweep_stairs()
-  world.show_world_with_robots(1, 1, 6, 6)
-  karel.display()
-  
+  karel = MonRobot.new(1, 1, Robota::EAST, 0)
+
+  karel.move
 end
 
 if __FILE__ == $0
