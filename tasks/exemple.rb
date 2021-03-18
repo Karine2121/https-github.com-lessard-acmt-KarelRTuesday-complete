@@ -10,15 +10,7 @@ require_relative "../karel/ur_robot"
 
 class MonRobot < UrRobot
 
-  def initialize (street, avenue, direction, beepers)
-    super(street, avenue, NORTH, beepers)
-  end
-
-
-  def move
-    super 
-    super 
-  end
+  attr_accessor :street, :avenue
 
 end
 
@@ -28,9 +20,14 @@ def task()
   world = Robota::World
   #world.read_world("../worlds/monde")
   
-  karel = MonRobot.new(1, 1, Robota::EAST, 0)
+  karel = MonRobot.new(1, 1, Robota::NORTH, 0)
+  5.times do 
+    karel.move
+  end
 
-  karel.move
+  karel2 = MonRobot.new(karel.street, karel.avenue, EAST, 0)
+
+  karel2.move
 end
 
 if __FILE__ == $0
