@@ -15,6 +15,32 @@ class RangeeRobot < UrRobot
 	def mettre_rangee
 		@runner_strategy.mettre_rangee(self)
 	end
+
+	def diamonte(longueur)
+		4.times do 
+			fait_cote(longueur)
+		end
+	end
+
+	def fait_cote(longueur)
+		longueur.times do 
+			put_beeper_and_move
+		end
+		fait_base
+	end
+
+	def put_beeper_and_move
+		put_beeper
+		move
+		turn_right
+		move
+		turn_left
+	end
+
+	def fait_base
+
+	end
+
 end
 
 class Strategie
@@ -26,6 +52,7 @@ end
 class UnBeeperStrategie < Strategie
 	def mettre_rangee(robot)
 		10.times do
+			robot.put_beeper
 			robot.move
 		end
 		#rien!
